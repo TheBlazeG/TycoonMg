@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float walkSpeed, runSpeed;
+    public Transform CameraAim;
+    public float walkSpeed, runSpeed,rotationSpeed;
     public bool CanMove;
 
     private Vector3 vectorMovement;
@@ -16,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         speed = walkSpeed;
-        vectorMovement=Vector3.zero;
+        vectorMovement = Vector3.zero;
     }
 
     // Update is called once per frame
@@ -25,7 +26,9 @@ public class PlayerMovement : MonoBehaviour
         if (CanMove)
         { Walk();
             Run();
+            alignPlayer();
         }
+        Gravity();
     }
 
     void Walk()
@@ -33,7 +36,9 @@ public class PlayerMovement : MonoBehaviour
         vectorMovement.x = Input.GetAxis("Horizontal");
         vectorMovement.z = Input.GetAxis("Vertical");
         vectorMovement = vectorMovement.normalized;
+        vectorMovement = CameraAim.TransformDirection(vectorMovement);
         characterController.Move(vectorMovement * speed * Time.deltaTime);
+
     }
 
     void Run()
@@ -54,4 +59,15 @@ public class PlayerMovement : MonoBehaviour
         //gravedad provisional
         characterController.Move(new Vector3(0f, -4f * Time.deltaTime, 0f));
     }
+    void alignPlayer()
+    {
+        if (characterController.velocity.magnitude > 0f)
+        {
+             
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(vectorMovement), rotationSpeed * Time.deltaTime);
+            }
+
+        }
+        }
 }
