@@ -24,14 +24,17 @@ public class CameraController : MonoBehaviour
         FollowTarget();
     }
     void Rotate()
-    { xRotation += Input.GetAxis("Mouse X") * Time.deltaTime * sensibility;
-        yRotation += Input.GetAxis("Mouse X") * Time.deltaTime * sensibility;
+    {
+        xRotation += Input.GetAxis("Mouse X") * Time.deltaTime * sensibility;
+        yRotation += Input.GetAxis("Mouse Y") * Time.deltaTime * sensibility;
 
 
         yRotation = Mathf.Clamp(yRotation, -65, 65);
-            transform.localRotation = Quaternion.Euler(0f,xRotation,0f);
+
+        transform.localRotation = Quaternion.Euler(0f, xRotation, 0f);
         CameraJointY.transform.localRotation = Quaternion.Euler(-yRotation, 0f, 0f);
-        }
+    }
+
     void FollowTarget()
     {
         transform.position = targetObject.position;
