@@ -368,6 +368,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 127432074}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &138814628
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 138814629}
+  - component: {fileID: 138814630}
+  m_Layer: 0
+  m_Name: GroundDetector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &138814629
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138814628}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.67, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1974265732}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &138814630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138814628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b09e2dcd8b80e243b5a07517021917f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0.5
+  detectedLayers:
+    serializedVersion: 2
+    m_Bits: 62
 --- !u!1 &287417657 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3202077004954682237, guid: e767a6debbe5b8440aa243145fb2bdf4, type: 3}
@@ -589,7 +637,7 @@ GameObject:
   - component: {fileID: 539002641}
   - component: {fileID: 539002640}
   - component: {fileID: 539002639}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2671,9 +2719,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1392570098}
     - target: {fileID: 3498987177722902096, guid: a07538d8aa1faa04a9c9115a00685e40, type: 3}
+      propertyPath: jumpForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498987177722902096, guid: a07538d8aa1faa04a9c9115a00685e40, type: 3}
       propertyPath: rotationSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3498987177722902096, guid: a07538d8aa1faa04a9c9115a00685e40, type: 3}
+      propertyPath: groundDetector
+      value: 
+      objectReference: {fileID: 138814630}
     - target: {fileID: 3603568589442322271, guid: a07538d8aa1faa04a9c9115a00685e40, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2720,7 +2776,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3603568589442322271, guid: a07538d8aa1faa04a9c9115a00685e40, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 138814629}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a07538d8aa1faa04a9c9115a00685e40, type: 3}
 --- !u!1001 &3702942341913078388

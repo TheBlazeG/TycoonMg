@@ -6,18 +6,21 @@ public class PlayerMovement : MonoBehaviour
 {
     // Start is called before the first frame update
     public Transform CameraAim;
-    public float walkSpeed, runSpeed,rotationSpeed;
+    public float walkSpeed, runSpeed, rotationSpeed, jumpForce;
     public bool CanMove;
 
-    private Vector3 vectorMovement;
+    private Vector3 vectorMovement, verticalForce;
     private float speed;
+    private bool isGrounded;
     private CharacterController characterController;
+    public GroundDetector groundDetector;
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         speed = walkSpeed;
         vectorMovement = Vector3.zero;
+        verticalForce = Vector3.zero;
     }
 
     // Update is called once per frame
@@ -27,8 +30,10 @@ public class PlayerMovement : MonoBehaviour
         { Walk();
             Run();
             alignPlayer();
+            Jump();
         }
         Gravity();
+        CheckGround();
     }
 
     void Walk()
@@ -54,20 +59,40 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void Jump()
+    {
+        if (isGrounded && Input.GetAxis("Jump")>0f)
+        {
+            verticalForce = new Vector3(0f, jumpForce, 0f);
+            isGrounded = false;
+        } 
+    }
+
     void Gravity()
     {
-        //gravedad provisional
-        characterController.Move(new Vector3(0f, -4f * Time.deltaTime, 0f));
+        //si no estamos tocando el suelo
+        if (!isGrounded)
+        {
+            verticalForce += Physics.gravity * Time.deltaTime;
+        }
+        else
+        { 
+            verticalForce = new Vector3(0f, -2f, 0f); 
+        }
+        characterController.Move(verticalForce * Time.deltaTime);
     }
+
     void alignPlayer()
     {
         if (characterController.velocity.magnitude > 0f)
         {
-             
+
             {
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(vectorMovement), rotationSpeed * Time.deltaTime);
             }
 
         }
-        }
+    }
+    void CheckGround()
+    { isGrounded = groundDetector.getIsGrounded(); }
 }
