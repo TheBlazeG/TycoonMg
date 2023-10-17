@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.48314738, g: 0.54694736, b: 0.66003025, a: 1}
+  m_IndirectSpecularColor: {r: 0.52822214, g: 0.6026716, b: 0.7292858, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -214,8 +214,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd6043bde05a7fc4cba197d06915c1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damping: {x: 0.1, y: 0.5, z: 0.3}
-  ShoulderOffset: {x: 0.5, y: 0.7, z: 0}
+  Damping: {x: 0.5, y: 0.5, z: 0.5}
+  ShoulderOffset: {x: 0, y: 0.5, z: 0.5}
   VerticalArmLength: 0.4
   CameraSide: 1
   CameraDistance: 6
@@ -1276,8 +1276,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.09015268, y: -0.041389123, z: 0.0037498628, w: 0.9950605}
-  m_LocalPosition: {x: 0.5, y: 1.1, z: -6}
+  m_LocalRotation: {x: 0.08101056, y: 0, z: 0, w: 0.9967133}
+  m_LocalPosition: {x: 0, y: 0.9, z: -5.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1500,8 +1500,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1089156726}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.09015268, y: -0.041389123, z: 0.0037498628, w: 0.9950605}
-  m_LocalPosition: {x: 0.5, y: 1.1, z: -6}
+  m_LocalRotation: {x: 0.08101056, y: 0, z: 0, w: 0.9967133}
+  m_LocalPosition: {x: 0, y: 0.9, z: -5.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2690,6 +2690,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3603568589442322271, guid: a07538d8aa1faa04a9c9115a00685e40, type: 3}
   m_PrefabInstance: {fileID: 3636331815217282056}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1974265733 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3498987177722902096, guid: a07538d8aa1faa04a9c9115a00685e40, type: 3}
+  m_PrefabInstance: {fileID: 3636331815217282056}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d00a47b18fd8294abd7df7cc4641ebe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9171101161657740
 GameObject:
   m_ObjectHideFlags: 0
@@ -2859,6 +2870,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543450652153756830}
   - component: {fileID: 5866666020502628068}
+  - component: {fileID: 5866666020502628069}
   m_Layer: 0
   m_Name: Ch39_nonPBR
   m_TagString: Untagged
@@ -4438,7 +4450,7 @@ Animator:
   m_GameObject: {fileID: 919132148418766372}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: ec95230167efd5f4b9c13105bd6181d9, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 51a96d711ffd7ba4286f8ff5a4fa851c, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -4449,6 +4461,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5866666020502628069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148418766372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4962e6f5e2f76ca42abf730cc8cb8f6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovement: {fileID: 1974265733}
+  groundDetector: {fileID: 138814630}
 --- !u!4 &5901452234252693021
 Transform:
   m_ObjectHideFlags: 0

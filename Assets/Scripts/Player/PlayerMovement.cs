@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public bool CanMove;
 
     private Vector3 vectorMovement, verticalForce;
-    private float speed;
+    private float speed,currentSpeed;
     private bool isGrounded;
     private CharacterController characterController;
     public GroundDetector groundDetector;
@@ -18,7 +18,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        speed = walkSpeed;
+        speed = 0f;
+        currentSpeed = 0f;
         vectorMovement = Vector3.zero;
         verticalForce = Vector3.zero;
     }
@@ -40,9 +41,13 @@ public class PlayerMovement : MonoBehaviour
     {//conseguimos los inputs
         vectorMovement.x = Input.GetAxis("Horizontal");
         vectorMovement.z = Input.GetAxis("Vertical");
+        //normalizamos el vector de movimiento 
         vectorMovement = vectorMovement.normalized;
+        //nos movemos con direccion a la camara
         vectorMovement = CameraAim.TransformDirection(vectorMovement);
-        characterController.Move(vectorMovement * speed * Time.deltaTime);
+        //velocidad actual con suavizado
+        currentSpeed = Mathf.Lerp(currentSpeed, vectorMovement.magnitude * speed, 10f*Time.deltaTime);
+        characterController.Move(vectorMovement * currentSpeed * Time.deltaTime);
 
     }
 
@@ -95,4 +100,9 @@ public class PlayerMovement : MonoBehaviour
     }
     void CheckGround()
     { isGrounded = groundDetector.getIsGrounded(); }
+
+    public float GetCurrentSpeed()
+    {
+        return currentSpeed;
+    }
 }
