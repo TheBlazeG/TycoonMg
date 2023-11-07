@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class ResourceBooster : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float multiplier;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.gameObject.GetComponent<Resource>() != null)
+        {
+            other.gameObject.GetComponent<Resource>().value *= multiplier;
+        }
     }
 }
