@@ -5295,7 +5295,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 554871215264233390, guid: e767a6debbe5b8440aa243145fb2bdf4, type: 3}
       propertyPath: cost
-      value: 700
+      value: 4000
       objectReference: {fileID: 0}
     - target: {fileID: 554871215264233390, guid: e767a6debbe5b8440aa243145fb2bdf4, type: 3}
       propertyPath: resourceManager
@@ -5303,7 +5303,7 @@ PrefabInstance:
       objectReference: {fileID: 1943306733}
     - target: {fileID: 554871215264233390, guid: e767a6debbe5b8440aa243145fb2bdf4, type: 3}
       propertyPath: OnActivated.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 554871215264233390, guid: e767a6debbe5b8440aa243145fb2bdf4, type: 3}
       propertyPath: OnActivated.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
